@@ -1,7 +1,7 @@
-import React from 'react';
-import { FaTruckFast } from 'react-icons/fa6';
-import { FaArrowRotateLeft } from 'react-icons/fa6';
-import { FaShieldAlt } from 'react-icons/fa';
+import React from "react";
+import { FaTruckFast } from "react-icons/fa6";
+import { FaArrowRotateLeft } from "react-icons/fa6";
+import { FaShieldAlt } from "react-icons/fa";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -9,24 +9,30 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from '@/components/ui/breadcrumb';
-import { FaHouse } from 'react-icons/fa6';
-import { renderStars } from '@/app/_Components/StarsRate/StarsRate';
-import Quantity from '@/app/_Components/SingleProduct/Quantity/Quantity';
-import AddToCartButtons from '@/app/_Components/SingleProduct/AddToCartButtons/AddToCartButtons';
-import MyGallery from '@/app/_Components/ProductSlider/ProductSlider';
-import { getSingleProduct, getSingleSubcategories } from '@/api/services/routemisr.services';
-import { TabsDemo } from '@/app/_Components/ProdcutTab/ProdcutTab';
-import ProductSwiper from '@/app/_Components/ProductSliderTwo/ProductSliderTwo';
+} from "@/components/ui/breadcrumb";
+import { FaHouse } from "react-icons/fa6";
+import { renderStars } from "@/app/_Components/StarsRate/StarsRate";
+import Quantity from "@/app/_Components/SingleProduct/Quantity/Quantity";
+import AddToCartButtons from "@/app/_Components/SingleProduct/AddToCartButtons/AddToCartButtons";
+import MyGallery from "@/app/_Components/ProductSlider/ProductSlider";
+import {
+  getSingleProduct,
+  getSingleSubcategories,
+} from "@/api/services/routemisr.services";
+import { TabsDemo } from "@/app/_Components/ProdcutTab/ProdcutTab";
+import ProductSwiper from "@/app/_Components/ProductSliderTwo/ProductSliderTwo";
+import { ProductType } from "@/api/types/product.type";
 
-export default async function products(props: { params: Promise<{ id: string }> }) {
+export default async function products(props: {
+  params: Promise<{ id: string }>;
+}) {
   const params = await props.params;
   const id = params.id;
   function getDiscountPercentage(price: number, priceAfterDiscount: number) {
     return Math.round(((price - priceAfterDiscount) / price) * 100);
   }
-  const singleProduct = await getSingleProduct(id);
-  const relatedProducts = await getSingleSubcategories(singleProduct.subcategory[0]._id);
+  const singleProduct: ProductType = await getSingleProduct(id);
+  const relatedProducts = await getSingleSubcategories(singleProduct._id);
   return (
     <>
       <nav className="py-4">
@@ -63,7 +69,7 @@ export default async function products(props: { params: Promise<{ id: string }> 
                 </BreadcrumbLink> 
                 <BreadcrumbItem> */}
                 <div className="text-gray-500 hover:text-green-600 cursor-pointer">
-                  {singleProduct.subcategory[0]?.name}
+                  {/* {singleProduct.subcategory[0]?.name} */}
                 </div>
               </BreadcrumbItem>
               <BreadcrumbSeparator />
@@ -104,7 +110,8 @@ export default async function products(props: { params: Promise<{ id: string }> 
                       {renderStars(singleProduct.ratingsAverage)}
                     </div>
                     <span className="text-xs text-gray-500">
-                      {singleProduct.ratingsAverage} {`(${singleProduct.ratingsQuantity} reviews)`}
+                      {singleProduct.ratingsAverage}{" "}
+                      {`(${singleProduct.ratingsQuantity} reviews)`}
                     </span>
                   </div>
                 </div>
@@ -132,23 +139,27 @@ export default async function products(props: { params: Promise<{ id: string }> 
                 <div className="flex items-center gap-2 mb-6">
                   <span
                     className={`flex items-center gap-1.5 text-sm px-3 py-1.5 rounded-full 
-                    ${singleProduct.quantity > 0 ? 'bg-green-50 text-green-700' : 'bg-red-50 text-red-700'}`}
+                    ${singleProduct.quantity > 0 ? "bg-green-50 text-green-700" : "bg-red-50 text-red-700"}`}
                   >
                     <span
                       className={`w-2 h-2 rounded-full 
-                    ${singleProduct.quantity > 0 ? 'bg-green-500' : 'bg-red-500'}`}
+                    ${singleProduct.quantity > 0 ? "bg-green-500" : "bg-red-500"}`}
                     ></span>
-                    {singleProduct.quantity > 0 ? 'In Stock' : 'Out of Stock'}
+                    {singleProduct.quantity > 0 ? "In Stock" : "Out of Stock"}
                   </span>
                 </div>
                 <div className="border-t border-gray-100 pt-5 mb-6">
-                  <div className="text-gray-600 leading-relaxed">{singleProduct.description}</div>
+                  <div className="text-gray-600 leading-relaxed">
+                    {singleProduct.description}
+                  </div>
                 </div>
                 <Quantity
                   maxQty={singleProduct.quantity}
-                  price={singleProduct.priceAfterDiscount ?? singleProduct.price}
+                  price={
+                    singleProduct.priceAfterDiscount ?? singleProduct.price
+                  }
                 />
-                <AddToCartButtons  id={singleProduct.id} />
+                <AddToCartButtons id={singleProduct.id} />
                 <div className="border-t border-gray-100 pt-6">
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                     <div className="flex items-center gap-3">
@@ -156,7 +167,9 @@ export default async function products(props: { params: Promise<{ id: string }> 
                         <FaTruckFast />
                       </div>
                       <div>
-                        <h4 className="font-medium text-gray-900 text-sm">30 Days Return</h4>
+                        <h4 className="font-medium text-gray-900 text-sm">
+                          30 Days Return
+                        </h4>
                         <p className="text-xs text-gray-500">Money back</p>
                       </div>
                     </div>
@@ -165,7 +178,9 @@ export default async function products(props: { params: Promise<{ id: string }> 
                         <FaArrowRotateLeft />
                       </div>
                       <div>
-                        <h4 className="font-medium text-gray-900 text-sm">30 Days Return</h4>
+                        <h4 className="font-medium text-gray-900 text-sm">
+                          30 Days Return
+                        </h4>
                         <p className="text-xs text-gray-500">Money back</p>
                       </div>
                     </div>
@@ -174,7 +189,9 @@ export default async function products(props: { params: Promise<{ id: string }> 
                         <FaShieldAlt />
                       </div>
                       <div>
-                        <h4 className="font-medium text-gray-900 text-sm">Secure Payment</h4>
+                        <h4 className="font-medium text-gray-900 text-sm">
+                          Secure Payment
+                        </h4>
                         <p className="text-xs text-gray-500">100% Protected</p>
                       </div>
                     </div>
