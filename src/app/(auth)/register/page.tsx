@@ -294,7 +294,7 @@ export default function Register() {
                     type="checkbox"
                     id="terms"
                     className="size-4 accent-green-600"
-                    {...register("terms")}
+                    // {...register("terms")}
                   />
                   <label htmlFor="terms">
                     I agree to the{" "}
