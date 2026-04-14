@@ -20,12 +20,12 @@ export default async function page(props: { params: Promise<{ id: string , name 
         bgColor={'bg-gradient-to-br from-green-600 via-green-500 to-green-400 text-white'}
         container={'container mx-auto px-4 py-10 sm:py-14'}
         flexNav={'flex items-center gap-2 text-sm text-white/70 mb-6 flex-wrap'}
-        linkName={subcategories?.[0]?.subcategory?.[0]?.name || 'No Product Found'}
+        linkName={  'No Product Found'}
         iconStyle={'text-3xl'}
         link={'/categories'}
         nameOfLink={'Categories'}
         icon={FaFolderOpen}
-        h1={subcategories?.[0]?.subcategory?.[0]?.name || 'No Product Found'}
+        h1={ 'No Product Found'}
         desc={'Browse our wide range of product categories'}
       />
       <div className="container mx-auto px-4 py-8">
@@ -39,7 +39,7 @@ export default async function page(props: { params: Promise<{ id: string , name 
             href={`/products`}
           >
             <FaFolderOpen className="text-sm" />
-            {subcategories?.[0]?.subcategory?.[0]?.name || 'Back to Products'}
+            { 'Back to Products'}
             <IoMdClose className="text-sm" />
           </Link>
           <Link className="text-sm text-gray-500 hover:text-gray-700 underline" href="/products">
