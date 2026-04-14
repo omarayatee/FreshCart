@@ -1,29 +1,32 @@
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { FaTruckFast } from 'react-icons/fa6';
-import { FaBoxArchive } from 'react-icons/fa6';
-import { FaStar } from 'react-icons/fa';
-import { FaCheck } from 'react-icons/fa6';
-import { FaTruck } from 'react-icons/fa';
-import { FaArrowRotateLeft } from 'react-icons/fa6';
-import { FaShieldAlt } from 'react-icons/fa';
-import { getSingleProduct } from '@/api/services/routemisr.services';
-import { calculateRatingPercentages, renderStars } from '../StarsRate/StarsRate';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { FaTruckFast } from "react-icons/fa6";
+import { FaBoxArchive } from "react-icons/fa6";
+import { FaStar } from "react-icons/fa";
+import { FaCheck } from "react-icons/fa6";
+import { FaTruck } from "react-icons/fa";
+import { FaArrowRotateLeft } from "react-icons/fa6";
+import { FaShieldAlt } from "react-icons/fa";
+import { getSingleProduct } from "@/api/services/routemisr.services";
+import {
+  calculateRatingPercentages,
+  renderStars,
+} from "../StarsRate/StarsRate";
 
 export async function TabsDemo({ id }: { id: string }) {
   const singleProduct = await getSingleProduct(id);
   const percentages = calculateRatingPercentages(singleProduct.reviews);
   return (
     <Tabs defaultValue="Product-Details">
-      <TabsList >
-        <TabsTrigger value="Product-Details" >
+      <TabsList>
+        <TabsTrigger value="Product-Details">
           <FaBoxArchive />
           Product Details
         </TabsTrigger>
-        <TabsTrigger value="Reviews" >
+        <TabsTrigger value="Reviews">
           <FaStar />
           {`Reviews (${singleProduct.reviews.length})`}
         </TabsTrigger>
-        <TabsTrigger value="Shipping-Returns" >
+        <TabsTrigger value="Shipping-Returns">
           <FaTruckFast />
           Shipping & Returns
         </TabsTrigger>
@@ -32,32 +35,43 @@ export async function TabsDemo({ id }: { id: string }) {
         <div className="p-6">
           <div className="space-y-6">
             <div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">About this Product</h3>
+              <h3 className="text-lg font-semibold text-gray-900 mb-3">
+                About this Product
+              </h3>
               <p className="text-gray-600 leading-relaxed text-[16px] font-medium">
                 {singleProduct.description}
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="bg-gray-50 rounded-lg p-4">
-                <h4 className="font-medium text-gray-900 mb-3">Product Information</h4>
+                <h4 className="font-medium text-gray-900 mb-3">
+                  Product Information
+                </h4>
                 <ul className="space-y-2">
                   <li className="flex justify-between text-sm">
                     <span className="text-gray-500">Category</span>
-                    <span className="text-gray-900 font-medium">{singleProduct.category.name}</span>
+                    <span className="text-gray-900 font-medium">
+                      {singleProduct.category.name}
+                    </span>
                   </li>
                   <li className="flex justify-between text-sm">
                     <span className="text-gray-500">Subcategory</span>
                     <span className="text-gray-900 font-medium">
-                      {singleProduct.subcategory[0].name}
+                      {/* {singleProduct.subcategory[0]?.name} */}
+                      name
                     </span>
                   </li>
                   <li className="flex justify-between text-sm">
                     <span className="text-gray-500">Brand</span>
-                    <span className="text-gray-900 font-medium">{singleProduct.brand.name}</span>
+                    <span className="text-gray-900 font-medium">
+                      {singleProduct.brand.name}
+                    </span>
                   </li>
                   <li className="flex justify-between text-sm">
                     <span className="text-gray-500">Items Sold</span>
-                    <span className="text-gray-900 font-medium">{singleProduct.sold}+ sold</span>
+                    <span className="text-gray-900 font-medium">
+                      {singleProduct.sold}+ sold
+                    </span>
                   </li>
                 </ul>
               </div>
@@ -106,7 +120,9 @@ export async function TabsDemo({ id }: { id: string }) {
               <div className="flex-1 w-full">
                 {[5, 4, 3, 2, 1].map((star) => (
                   <div key={star} className="flex items-center gap-3 mb-2">
-                    <span className="text-sm text-gray-600 w-8">{star} star</span>
+                    <span className="text-sm text-gray-600 w-8">
+                      {star} star
+                    </span>
                     <div className="flex-1 h-2 bg-gray-200 rounded-full overflow-hidden">
                       <div
                         className="h-full bg-yellow-400 rounded-full transition-all duration-300"
@@ -123,7 +139,9 @@ export async function TabsDemo({ id }: { id: string }) {
             <div className="border-t border-gray-200 pt-6">
               <div className="py-8 flex flex-col items-center">
                 <FaStar className="text-4xl text-gray-300 mb-3" />
-                <p className="text-gray-500">Customer reviews will be displayed here.</p>
+                <p className="text-gray-500">
+                  Customer reviews will be displayed here.
+                </p>
                 <button className="mt-4 text-green-600 hover:text-green-700 font-medium cursor-pointer">
                   Write a Review
                 </button>
@@ -141,7 +159,9 @@ export async function TabsDemo({ id }: { id: string }) {
                   <div className="h-12 w-12 bg-green-600 text-white rounded-full flex items-center justify-center">
                     <FaTruck className="text-xl" />
                   </div>
-                  <h4 className="font-semibold text-gray-900">Shipping Information</h4>
+                  <h4 className="font-semibold text-gray-900">
+                    Shipping Information
+                  </h4>
                 </div>
                 <ul className="space-y-3">
                   <li className="flex items-start gap-2 text-sm text-gray-700">
@@ -167,7 +187,9 @@ export async function TabsDemo({ id }: { id: string }) {
                   <div className="h-12 w-12 bg-green-600 text-white rounded-full flex items-center justify-center">
                     <FaArrowRotateLeft className="text-xl" />
                   </div>
-                  <h4 className="font-semibold text-gray-900">Returns & Refunds</h4>
+                  <h4 className="font-semibold text-gray-900">
+                    Returns & Refunds
+                  </h4>
                 </div>
                 <ul className="space-y-3">
                   <li className="flex items-start gap-2 text-sm text-gray-700">
@@ -194,10 +216,13 @@ export async function TabsDemo({ id }: { id: string }) {
                 <FaShieldAlt className="text-2xl" />
               </div>
               <div>
-                <h4 className="font-semibold text-gray-900 mb-1">Buyer Protection Guarantee</h4>
+                <h4 className="font-semibold text-gray-900 mb-1">
+                  Buyer Protection Guarantee
+                </h4>
                 <p className="text-sm text-gray-600">
-                  Get a full refund if your order doesn&apos;t arrive or isn&apos;t as described. We
-                  ensure your shopping experience is safe and secure.
+                  Get a full refund if your order doesn&apos;t arrive or
+                  isn&apos;t as described. We ensure your shopping experience is
+                  safe and secure.
                 </p>
               </div>
             </div>

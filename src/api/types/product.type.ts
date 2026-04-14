@@ -1,4 +1,5 @@
 export interface ProductType {
+  reviews: { rating: number; }[];
   sold: number;
   image: string[];
   subcategory: [[object]];
