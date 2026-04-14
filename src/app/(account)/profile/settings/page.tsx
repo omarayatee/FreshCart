@@ -272,13 +272,13 @@ export default function Profile() {
                       <div className="flex items-center justify-between">
                         <span className="text-gray-500">User ID</span>
                         <span className="font-mono text-gray-700">
-                          {myData?.id}
+                          5341654sdfd23424fds
                         </span>
                       </div>
                       <div className="flex items-center justify-between">
                         <span className="text-gray-500">Role</span>
                         <span className="px-3 py-1 rounded-lg bg-green-100 text-green-700 font-medium capitalize">
-                          {myData?.user.role || "user"}
+                          admin
                         </span>
                       </div>
                     </div>
