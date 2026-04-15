@@ -22,11 +22,11 @@ export default function AddBtn({
   async function AddProduct() {
    const res = await addToCart(id);
    if(res.status === "success"){
-    toast.success(res.message, {position : "top-center", duration : 2000})
+    toast.success("Product added", {position : "top-center", duration : 2000})
     setnumOfCartItems(numOfCartItems + 1)
    }
    else{
-    toast.error(res.message, {position : "top-center", duration : 2000})
+    toast.error("Faild to add item", {position : "top-center", duration : 2000})
    }
    
    

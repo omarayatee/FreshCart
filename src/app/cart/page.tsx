@@ -22,6 +22,7 @@ import { FaTag } from 'react-icons/fa6';
 import { FaShieldAlt } from 'react-icons/fa';
 import { CartContext } from '@/context/CartContext';
 import { cartData } from '@/api/types/cart.type';
+import { toast } from 'sonner';
 
 export default function Cart() {
   const { numOfCartItems, setnumOfCartItems } = useContext(CartContext);
@@ -43,6 +44,7 @@ export default function Cart() {
     if (res.status === 'success') {
       setproductData(res.data);
       setcartId(res.cartId);
+      
     }
   }
   async function updateProduct(productId: string, count: number, sign: string) {
@@ -85,6 +87,7 @@ export default function Cart() {
     if (res.status === 'success') {
       setproductData(res.data);
       setnumOfCartItems(0);
+      toast.success('Products Removed Successfully');
     }
   }
   useEffect(() => {
