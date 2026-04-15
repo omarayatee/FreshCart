@@ -43,6 +43,9 @@ export const authOptions: NextAuthOptions = {
   ],
   callbacks: {
     jwt({ token, user }) {
+
+      
+      
       if (user) {
         token.routeToken = user.accessToken;
         token.id = user.id;

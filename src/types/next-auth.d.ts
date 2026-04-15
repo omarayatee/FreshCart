@@ -25,6 +25,7 @@ declare module 'next-auth/jwt' {
     routeToken: string;
     id: string;
     role: string;
+    
   }
 }
 
