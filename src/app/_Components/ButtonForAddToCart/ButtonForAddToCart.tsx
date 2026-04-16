@@ -41,6 +41,7 @@ export default function ButtonForAddToCart({
 
       if (res.status === 'success') {
         setnumOfCartItems((prev: number) => prev + 1);
+        toast.success("Product added", {position : "top-center", duration : 2000})
       } else {
         setnumOfCartItems((prev: number) => Math.max(prev - 1, 0));
       }
