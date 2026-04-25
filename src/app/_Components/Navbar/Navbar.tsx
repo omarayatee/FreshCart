@@ -1,26 +1,26 @@
-'use client';
-import React, { useContext } from 'react';
-import logo from '../../../assets/images/freshcart-logo-nav.svg';
-import { FaTruck } from 'react-icons/fa';
-import { IoIosGift } from 'react-icons/io';
-import { FaPhoneAlt } from 'react-icons/fa';
-import { MdOutlineMailOutline } from 'react-icons/md';
-import { FiUser } from 'react-icons/fi';
-import { FaUserPlus } from 'react-icons/fa';
-import { FaHeadset } from 'react-icons/fa6';
-import { FaSearch } from 'react-icons/fa';
-import { FaRegHeart } from 'react-icons/fa';
-import { FaCartShopping } from 'react-icons/fa6';
-import Link from 'next/link';
-import Image from 'next/image';
-import { Field } from '@/components/ui/field';
-import { Input } from '@/components/ui/input';
-import { FaBars } from 'react-icons/fa';
-import { Button } from '@/components/ui/button';
-import { FaRightFromBracket } from 'react-icons/fa6';
-import { FaBoxOpen } from 'react-icons/fa';
-import { FaRegAddressBook } from 'react-icons/fa';
-import { IoMdSettings } from 'react-icons/io';
+"use client";
+import React, { useContext } from "react";
+import logo from "../../../assets/images/freshcart-logo-nav.svg";
+import { FaTruck } from "react-icons/fa";
+import { IoIosGift } from "react-icons/io";
+import { FaPhoneAlt } from "react-icons/fa";
+import { MdOutlineMailOutline } from "react-icons/md";
+import { FiUser } from "react-icons/fi";
+import { FaUserPlus } from "react-icons/fa";
+import { FaHeadset } from "react-icons/fa6";
+import { FaSearch } from "react-icons/fa";
+import { FaRegHeart } from "react-icons/fa";
+import { FaCartShopping } from "react-icons/fa6";
+import Link from "next/link";
+import Image from "next/image";
+import { Field } from "@/components/ui/field";
+import { Input } from "@/components/ui/input";
+import { FaBars } from "react-icons/fa";
+import { Button } from "@/components/ui/button";
+import { FaRightFromBracket } from "react-icons/fa6";
+import { FaBoxOpen } from "react-icons/fa";
+import { FaRegAddressBook } from "react-icons/fa";
+import { IoMdSettings } from "react-icons/io";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -29,14 +29,14 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
+} from "@/components/ui/dropdown-menu";
 import {
   NavigationMenu,
   NavigationMenuContent,
   NavigationMenuItem,
   NavigationMenuList,
   NavigationMenuTrigger,
-} from '@/components/ui/navigation-menu';
+} from "@/components/ui/navigation-menu";
 import {
   Sheet,
   SheetClose,
@@ -44,18 +44,19 @@ import {
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from '@/components/ui/sheet';
-import { signOut, useSession } from 'next-auth/react';
-import { FaRegUserCircle } from 'react-icons/fa';
-import { CartContext } from '@/context/CartContext';
-import { WishlistContext } from '@/context/WishListContext';
+} from "@/components/ui/sheet";
+import { signOut, useSession } from "next-auth/react";
+import { FaRegUserCircle } from "react-icons/fa";
+import { CartContext } from "@/context/CartContext";
+import { WishlistContext } from "@/context/WishListContext";
 
 export default function Navbar() {
   const { numOfCartItems, setnumOfCartItems } = useContext(CartContext);
-  const { numOfWishlistItems, setnumOfWishlistItems } = useContext(WishlistContext);
+  const { numOfWishlistItems, setnumOfWishlistItems } =
+    useContext(WishlistContext);
   const { data: myData, status } = useSession();
   function mySignOut() {
-    signOut({ redirect: true, callbackUrl: '/login' });
+    signOut({ redirect: true, callbackUrl: "/login" });
   }
   return (
     <>
@@ -91,7 +92,7 @@ export default function Navbar() {
               </div>
               <span className="w-px h-4 bg-gray-200"></span>
               <div className="flex items-center gap-4">
-                {status === 'unauthenticated' ? (
+                {status === "unauthenticated" ? (
                   <>
                     <Link
                       className="flex items-center gap-2 hover:text-green-600 transition-colors"
@@ -174,22 +175,30 @@ export default function Navbar() {
                           <Link href="/categories">All Categories</Link>
                         </li>
                         <li className="px-4 py-2.5 text-gray-600 hover:text-green-600 hover:bg-green-50 transition-colors">
-                          <Link href={`/singleSubcategories/6407f3a8b575d3b90bf957e2`}>
+                          <Link
+                            href={`/singleSubcategories/6407f3a8b575d3b90bf957e2`}
+                          >
                             Electronics
                           </Link>
                         </li>
                         <li className="px-4 py-2.5 text-gray-600 hover:text-green-600 hover:bg-green-50 transition-colors">
-                          <Link href={`/singleSubcategories/6407f1bcb575d3b90bf95797`}>
+                          <Link
+                            href={`/singleSubcategories/6407f1bcb575d3b90bf95797`}
+                          >
                             {"Women's Fashion"}
                           </Link>
                         </li>
                         <li className="px-4 py-2.5 text-gray-600 hover:text-green-600 hover:bg-green-50 transition-colors">
-                          <Link href={`/singleSubcategories/6407f243b575d3b90bf957ac`}>
+                          <Link
+                            href={`/singleSubcategories/6407f243b575d3b90bf957ac`}
+                          >
                             {"Men's Fashion"}
                           </Link>
                         </li>
                         <li className="px-4 py-2.5 text-gray-600 hover:text-green-600 hover:bg-green-50 transition-colors">
-                          <Link href={`/singleSubcategories/6407f0cbb575d3b90bf95779`}>
+                          <Link
+                            href={`/singleSubcategories/6407f0cbb575d3b90bf95779`}
+                          >
                             Beauty & Health
                           </Link>
                         </li>
@@ -242,7 +251,7 @@ export default function Navbar() {
                   </span>
                 )}
               </Link>
-              {status === 'unauthenticated' ? (
+              {status === "unauthenticated" ? (
                 <>
                   <Link
                     href="/login"
@@ -406,7 +415,9 @@ export default function Navbar() {
                             <div className="w-9 h-9 rounded-full bg-red-50 flex items-center justify-center">
                               <FaRegHeart className="text-red-500 text-lg" />
                             </div>
-                            <span className="font-medium text-gray-700">Wishlist</span>
+                            <span className="font-medium text-gray-700">
+                              Wishlist
+                            </span>
                           </div>
                         </Link>
                       </SheetClose>
@@ -419,12 +430,14 @@ export default function Navbar() {
                             <div className="w-9 h-9 rounded-full bg-green-50 flex items-center justify-center text-md">
                               <FaCartShopping className="text-green-600 text-lg" />
                             </div>
-                            <span className="font-medium text-gray-700">Cart</span>
+                            <span className="font-medium text-gray-700">
+                              Cart
+                            </span>
                           </div>
                         </Link>
                       </SheetClose>
                     </div>
-                    {status === 'unauthenticated' ? (
+                    {status === "unauthenticated" ? (
                       <>
                         <div className="space-y-1">
                           <div className="grid grid-cols-2 gap-3 pt-2">
@@ -461,7 +474,9 @@ export default function Navbar() {
                               <div className="w-9 h-9 rounded-full bg-red-50 flex items-center justify-center">
                                 <FaRightFromBracket className="text-red-500" />
                               </div>
-                              <span className="font-medium text-red-600">Sign Out</span>
+                              <span className="font-medium text-red-600">
+                                Sign Out
+                              </span>
                             </button>
                           </SheetClose>
                         </div>
@@ -479,7 +494,9 @@ export default function Navbar() {
                           <div className="text-sm font-semibold text-start text-gray-700">
                             Need Help?
                           </div>
-                          <div className="text-sm text-green-600">Contact Support</div>
+                          <div className="text-sm text-green-600">
+                            Contact Support
+                          </div>
                         </div>
                       </Link>
                     </SheetClose>
