@@ -399,7 +399,7 @@ export default function Navbar() {
                     <div className="flex flex-col">
                       <SheetClose>
                         <Link
-                          href="/wish-list"
+                          href="/wishlist"
                           className="flex items-center justify-between px-4 py-3 rounded-xl hover:bg-green-50 transition-colors"
                         >
                           <div className="flex items-center gap-3">
